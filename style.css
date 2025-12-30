@@ -5,7 +5,7 @@
     padding: 20px;
     background-color: #f4f4f4;
 }
-
+body { background: yellow; }
 .element {
     border: 1px solid #ccc;
     padding: 5px;
