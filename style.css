@@ -1,0 +1,25 @@
+.periodic-table {
+    display: grid;
+    grid-template-columns: repeat(18, 1fr); /* 18 columns */
+    gap: 4px;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.element {
+    border: 1px solid #ccc;
+    padding: 5px;
+    text-align: center;
+    background: white;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.element:hover {
+    transform: scale(1.1);
+    z-index: 10;
+    border-color: #007bff;
+}
+
+.symbol { font-weight: bold; font-size: 1.2em; }
+.at-num { font-size: 0.8em; color: #666; }
