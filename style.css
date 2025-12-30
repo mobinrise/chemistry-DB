@@ -1,43 +1,40 @@
-
-.periodic-table {
-    display: grid;
-    grid-template-columns: repeat(18, 1fr); /* 18 columns */
-    gap: 4px;
-    padding: 20px;
-    background-color: #f4f4f4;
+/* 1. GENERAL PAGE STYLING */
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background-color: #f0f2f5; 
+    margin: 0; 
+    padding: 20px; 
+    color: #333;
 }
 
-.element {
-    border: 1px solid #ccc;
-    padding: 5px;
+.container { 
+    display: flex; 
+    gap: 20px; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    align-items: flex-start;
+}
+
+header {
     text-align: center;
-    background: white;
-    cursor: pointer;
-    transition: transform 0.2s;
+    margin-bottom: 30px;
 }
 
-.element:hover {
-    transform: scale(1.1);
-    z-index: 10;
-    border-color: #007bff;
-}
-
-.symbol { font-weight: bold; font-size: 1.2em; }
-.at-num { font-size: 0.8em; color: #666; }
-body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; margin: 0; padding: 20px; }
-.container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
-
+/* 2. THE PERIODIC TABLE GRID */
 .periodic-table {
     display: grid;
+    /* 18 columns, each 55 pixels wide */
     grid-template-columns: repeat(18, 55px);
-    grid-template-rows: repeat(7, 65px);
-    gap: 5px;
+    /* 10 rows to allow space for Lanthanides/Actinides at the bottom */
+    grid-template-rows: repeat(10, 65px); 
+    gap: 6px;
     background: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
+/* 3. INDIVIDUAL ELEMENT TILES */
 .element {
     border: 1px solid #ddd;
     display: flex;
@@ -45,88 +42,109 @@ body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; margin: 0; padd
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border-radius: 4px;
-    transition: all 0.2s;
+    border-radius: 6px;
+    transition: all 0.3s ease;
     background: #fff;
+    position: relative;
 }
 
-.element:hover { transform: scale(1.1); z-index: 10; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-.symbol { font-weight: bold; font-size: 1.1em; }
-.number { font-size: 0.7em; color: #666; }
+/* Interactivity: Element grows and glows on hover */
+.element:hover { 
+    transform: scale(1.2); 
+    z-index: 100; 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    border-color: #333;
+}
 
+.symbol { 
+    font-weight: bold; 
+    font-size: 1.2em; 
+}
+
+.number { 
+    font-size: 0.75em; 
+    color: #555;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+}
+
+/* 4. THE INFO PANEL (SIDEBAR) */
 .info-panel {
     width: 350px;
     background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    min-height: 400px;
 }
-/* Category Colors */
-.diatomic-nonmetal { background-color: #ffca28; }
-.noble-gas { background-color: #90caf9; }
-.alkali-metal { background-color: #ef5350; }
+
+.info-panel h2 {
+    margin-top: 0;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* 5. LEGEND STYLING */
 .legend-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
-    margin-bottom: 20px;
-    padding: 10px;
+    margin-bottom: 25px;
+    padding: 15px;
     background: #fff;
-    border-radius: 8px;
-    font-size: 0.85em;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    font-size: 0.9em;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
 .legend-item {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
 }
 
 .dot {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     border-radius: 3px;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
 }
 
-/* CATEGORY COLORS - Match these to your element colors */
-.alkali-metal { background-color: #ff6666; }
-.alkaline-earth-metal { background-color: #ffdead; }
-.transition-metal { background-color: #ffc0c0; }
-.post-transition-metal { background-color: #cccccc; }
-.metalloid { background-color: #cccc99; }
-.diatomic-nonmetal { background-color: #a0ffa0; }
-.noble-gas { background-color: #c0ffff; }
-.lanthanide { background-color: #ffbfff; }
-.actinide { background-color: #ff99cc; }
-/* --- CHEMICAL FAMILY COLORS --- */
-
-/* Alkali Metals (Group 1) */
+/* 6. CHEMICAL FAMILY COLORS */
+/* We use !important to ensure these colors always override the white background */
 .alkali-metal { background-color: #ff6666 !important; }
-
-/* Alkaline Earth Metals (Group 2) */
 .alkaline-earth-metal { background-color: #ffdead !important; }
-
-/* Transition Metals (The big middle block) */
 .transition-metal { background-color: #ffc0c0 !important; }
-
-/* Metalloids (The staircase) */
-.metalloid { background-color: #cccc99 !important; }
-
-/* Post-transition Metals */
 .post-transition-metal { background-color: #cccccc !important; }
-
-/* Non-metals */
+.metalloid { background-color: #cccc99 !important; }
 .diatomic-nonmetal, .polyatomic-nonmetal { background-color: #a0ffa0 !important; }
-
-/* Noble Gases (Group 18) */
 .noble-gas { background-color: #c0ffff !important; }
-
-/* Lanthanides & Actinides (The bottom rows) */
 .lanthanide { background-color: #ffbfff !important; }
 .actinide { background-color: #ff99cc !important; }
-
-/* Catch-all for rare elements */
 .unknown\,_probably_transition_metal { background-color: #e8e8e8 !important; }
+
+/* 7. SEARCH BAR STYLING */
+.search-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#element-search {
+    padding: 10px 20px;
+    width: 350px;
+    border-radius: 20px;
+    border: 2px solid #ddd;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#element-search:focus {
+    border-color: #007bff;
+}
+
+.is-hidden {
+    display: none !important;
+}
