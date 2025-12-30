@@ -2,45 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Chemistry Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry Interactive Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header>
         <h1>Interactive Periodic Table</h1>
-
         <p>Click an element to explore trends and properties</p>
-    </header>
+        
+        <div class="search-container">
+            <input type="text" id="element-search" placeholder="Search by name or symbol (e.g. Gold or Au)..." oninput="filterElements()">
+        </div>
+
         <div class="legend-container">
-    <div class="legend-item"><span class="dot alkali-metal"></span> Alkali Metals</div>
-    <div class="legend-item"><span class="dot alkaline-earth-metal"></span> Alkaline Earth</div>
-    <div class="legend-item"><span class="dot transition-metal"></span> Transition Metals</div>
-    <div class="legend-item"><span class="dot post-transition-metal"></span> Post-Transition</div>
-    <div class="legend-item"><span class="dot metalloid"></span> Metalloids</div>
-    <div class="legend-item"><span class="dot diatomic-nonmetal"></span> Non-metals</div>
-    <div class="legend-item"><span class="dot noble-gas"></span> Noble Gases</div>
-    <div class="legend-item"><span class="dot lanthanide"></span> Lanthanides</div>
-    <div class="legend-item"><span class="dot actinide"></span> Actinides</div>
-</div>
+            <div class="legend-item"><span class="dot alkali-metal"></span> Alkali Metals</div>
+            <div class="legend-item"><span class="dot alkaline-earth-metal"></span> Alkaline Earth</div>
+            <div class="legend-item"><span class="dot transition-metal"></span> Transition Metals</div>
+            <div class="legend-item"><span class="dot post-transition-metal"></span> Post-Transition</div>
+            <div class="legend-item"><span class="dot metalloid"></span> Metalloids</div>
+            <div class="legend-item"><span class="dot diatomic-nonmetal"></span> Non-metals</div>
+            <div class="legend-item"><span class="dot noble-gas"></span> Noble Gases</div>
+            <div class="legend-item"><span class="dot lanthanide"></span> Lanthanides</div>
+            <div class="legend-item"><span class="dot actinide"></span> Actinides</div>
+        </div>
+    </header>
+
     <main class="container">
         <div id="periodic-table" class="periodic-table"></div>
 
-        <div id="info-panel" class="info-panel">
-            <div id="placeholder-text">Select an element to see details</div>
+        <aside id="info-panel" class="info-panel">
+            <div id="placeholder-text">
+                <h3>Welcome Teacher!</h3>
+                <p>Select an element from the table to see its full chemical profile, summary, and trends.</p>
+            </div>
+            
             <div id="detail-card" style="display:none;">
                 <h2 id="el-name">Name</h2>
                 <div class="stats">
-                    <p><strong>Atomic Mass:</strong> <span id="el-mass"></span></p>
+                    <p><strong>Atomic Mass:</strong> <span id="el-mass"></span> u</p>
                     <p><strong>Electronegativity:</strong> <span id="el-neg"></span></p>
                     <p><strong>Category:</strong> <span id="el-cat"></span></p>
                 </div>
+                <hr>
                 <p id="el-summary"></p>
-                <a id="el-wiki" target="_blank">Read more on Wikipedia</a>
+                <a id="el-wiki" class="wiki-btn" target="_blank">View on Wikipedia</a>
             </div>
-        </div>
+        </aside>
     </main>
-<body>
-    <div id="periodic-table"></div>
 
     <script src="script.js"></script>
 </body>
