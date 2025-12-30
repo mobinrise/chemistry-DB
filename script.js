@@ -1,31 +1,39 @@
-const elements = [
-    { name: "Hydrogen", symbol: "H", number: 1, x: 1, y: 1 },
-    { name: "Helium", symbol: "He", number: 2, x: 18, y: 1 },
-    { name: "Lithium", symbol: "Li", number: 3, x: 1, y: 2 },
-    { name: "Beryllium", symbol: "Be", number: 4, x: 2, y: 2 },
-    // ... you would add the rest here
-];
-
 const table = document.getElementById('periodic-table');
 
-elements.forEach(el => {
-    const div = document.createElement('div');
-    div.className = 'element';
+async function init() {
+    // 1. Fetch the element data
+    const response = await fetch('https://raw.githubusercontent.com/Bowserinator/Periodic-Table-JSON/master/PeriodicTableJSON.json');
+    const data = await response.json();
     
-    // Position the element in the grid
-    div.style.gridColumn = el.x;
-    div.style.gridRow = el.y;
+    // 2. Loop through each element
+    data.elements.forEach(el => {
+        const div = document.createElement('div');
+        div.className = `element ${el.category.replace(/\s+/g, '-')}`;
+        
+        // Use xpos and ypos from the JSON to place them in the grid
+        div.style.gridColumn = el.xpos;
+        div.style.gridRow = el.ypos;
 
-    div.innerHTML = `
-        <div class="at-num">${el.number}</div>
-        <div class="symbol">${el.symbol}</div>
-    `;
+        div.innerHTML = `
+            <span class="number">${el.number}</span>
+            <span class="symbol">${el.symbol}</span>
+        `;
 
-    div.onclick = () => showDetails(el);
-    table.appendChild(div);
-});
-function colorByElectronegativity(value) {
-    // Flourine is ~4.0 (Red), Francium is ~0.7 (Blue)
-    const hue = (1 - (value / 4)) * 240; 
-    return `hsl(${hue}, 70%, 80%)`;
+        div.onclick = () => showDetails(el);
+        table.appendChild(div);
+    });
 }
+
+function showDetails(el) {
+    document.getElementById('placeholder-text').style.display = 'none';
+    document.getElementById('detail-card').style.display = 'block';
+    
+    document.getElementById('el-name').innerText = `${el.name} (${el.symbol})`;
+    document.getElementById('el-mass').innerText = el.atomic_mass.toFixed(3);
+    document.getElementById('el-neg').innerText = el.electronegativity_pauling || 'N/A';
+    document.getElementById('el-cat').innerText = el.category;
+    document.getElementById('el-summary').innerText = el.summary;
+    document.getElementById('el-wiki').href = el.source;
+}
+
+init();

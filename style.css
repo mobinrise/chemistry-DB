@@ -23,3 +23,44 @@
 
 .symbol { font-weight: bold; font-size: 1.2em; }
 .at-num { font-size: 0.8em; color: #666; }
+body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; margin: 0; padding: 20px; }
+.container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+
+.periodic-table {
+    display: grid;
+    grid-template-columns: repeat(18, 55px);
+    grid-template-rows: repeat(7, 65px);
+    gap: 5px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.element {
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+    background: #fff;
+}
+
+.element:hover { transform: scale(1.1); z-index: 10; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+.symbol { font-weight: bold; font-size: 1.1em; }
+.number { font-size: 0.7em; color: #666; }
+
+.info-panel {
+    width: 350px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+/* Category Colors */
+.diatomic-nonmetal { background-color: #ffca28; }
+.noble-gas { background-color: #90caf9; }
+.alkali-metal { background-color: #ef5350; }

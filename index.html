@@ -1,36 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Chem Dashboard</title>
-    <style>
-        .element-card { border: 2px solid #333; padding: 20px; width: 200px; text-align: center; font-family: sans-serif; }
-        #element-img { width: 150px; height: auto; margin-top: 10px; }
-    </style>
+    <meta charset="UTF-8">
+    <title>Chemistry Interactive Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <h1>Interactive Periodic Table</h1>
+        <p>Click an element to explore trends and properties</p>
+    </header>
 
-    <h2>Interactive Chemistry Dashboard</h2>
-    <div class="periodic-table" id="periodic-table">
-    </div>
+    <main class="container">
+        <div id="periodic-table" class="periodic-table"></div>
 
-<div id="detail-panel" class="detail-panel">
-    <h3>Element Details</h3>
-    <div id="detail-content">Select an element to see trends.</div>
-</div>
+        <div id="info-panel" class="info-panel">
+            <div id="placeholder-text">Select an element to see details</div>
+            <div id="detail-card" style="display:none;">
+                <h2 id="el-name">Name</h2>
+                <div class="stats">
+                    <p><strong>Atomic Mass:</strong> <span id="el-mass"></span></p>
+                    <p><strong>Electronegativity:</strong> <span id="el-neg"></span></p>
+                    <p><strong>Category:</strong> <span id="el-cat"></span></p>
+                </div>
+                <p id="el-summary"></p>
+                <a id="el-wiki" target="_blank">Read more on Wikipedia</a>
+            </div>
+        </div>
+    </main>
 
-    <script>
-        async function fetchElement(atomicNumber) {
-            // Using a public API for element data
-            const response = await fetch(`https://neelpatel05.pythonanywhere.com/element/atomicnumber/${atomicNumber}`);
-            const data = await response.json();
-
-            document.getElementById('symbol').innerText = data.symbol;
-            document.getElementById('name').innerText = data.name;
-            document.getElementById('data').innerHTML = `
-                Electronegativity: ${data.electronegativity} <br>
-                Atomic Radius: ${data.atomicRadius}
-            `;
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
