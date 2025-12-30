@@ -1,4 +1,3 @@
-alert("Hello!");
 const table = document.getElementById('periodic-table');
 
 async function init() {

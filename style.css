@@ -1,3 +1,4 @@
+
 .periodic-table {
     display: grid;
     grid-template-columns: repeat(18, 1fr); /* 18 columns */
@@ -5,7 +6,7 @@
     padding: 20px;
     background-color: #f4f4f4;
 }
-body { background: yellow; }
+
 .element {
     border: 1px solid #ccc;
     padding: 5px;
@@ -64,3 +65,39 @@ body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; margin: 0; padd
 .diatomic-nonmetal { background-color: #ffca28; }
 .noble-gas { background-color: #90caf9; }
 .alkali-metal { background-color: #ef5350; }
+.legend-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 8px;
+    font-size: 0.85em;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+}
+
+/* CATEGORY COLORS - Match these to your element colors */
+.alkali-metal { background-color: #ff6666; }
+.alkaline-earth-metal { background-color: #ffdead; }
+.transition-metal { background-color: #ffc0c0; }
+.post-transition-metal { background-color: #cccccc; }
+.metalloid { background-color: #cccc99; }
+.diatomic-nonmetal { background-color: #a0ffa0; }
+.noble-gas { background-color: #c0ffff; }
+.lanthanide { background-color: #ffbfff; }
+.actinide { background-color: #ff99cc; }
