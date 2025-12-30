@@ -101,3 +101,32 @@ body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; margin: 0; padd
 .noble-gas { background-color: #c0ffff; }
 .lanthanide { background-color: #ffbfff; }
 .actinide { background-color: #ff99cc; }
+/* --- CHEMICAL FAMILY COLORS --- */
+
+/* Alkali Metals (Group 1) */
+.alkali-metal { background-color: #ff6666 !important; }
+
+/* Alkaline Earth Metals (Group 2) */
+.alkaline-earth-metal { background-color: #ffdead !important; }
+
+/* Transition Metals (The big middle block) */
+.transition-metal { background-color: #ffc0c0 !important; }
+
+/* Metalloids (The staircase) */
+.metalloid { background-color: #cccc99 !important; }
+
+/* Post-transition Metals */
+.post-transition-metal { background-color: #cccccc !important; }
+
+/* Non-metals */
+.diatomic-nonmetal, .polyatomic-nonmetal { background-color: #a0ffa0 !important; }
+
+/* Noble Gases (Group 18) */
+.noble-gas { background-color: #c0ffff !important; }
+
+/* Lanthanides & Actinides (The bottom rows) */
+.lanthanide { background-color: #ffbfff !important; }
+.actinide { background-color: #ff99cc !important; }
+
+/* Catch-all for rare elements */
+.unknown\,_probably_transition_metal { background-color: #e8e8e8 !important; }
